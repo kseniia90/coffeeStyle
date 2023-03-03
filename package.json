@@ -1,0 +1,13 @@
+{
+  "name": "coffee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://github.com/kseniia90/coffeeStyle",
+  "scripts": {
+    "deploy" : "gh-pages -d coffeeStyle"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
