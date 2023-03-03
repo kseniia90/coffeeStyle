@@ -1,0 +1,102 @@
+
+//Медиа запросы
+$mobile_sm: 360px;
+$mobile_md: 400px;
+$mobile: 576px;
+$tablet_sm: 640px;
+$tablet_md: 768px;
+$tablet: 992px;
+$desktop: 1200px;
+$desktop_lg: 1300px;
+$desktop_xl: 1440px;
+$desktop_xm: 1600px;
+$desktop_xxl: 1900px;
+
+@mixin mobile_sm {
+	@media (max-width:#{$mobile_sm}) {
+		@content;
+	}
+}
+
+@mixin mobile_md {
+	@media (max-width:#{$mobile_md}) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width:#{$mobile}) {
+		@content;
+	}
+}
+
+@mixin mobile-min {
+	@media (min-width:#{$mobile}) {
+		@content;
+	}
+}
+
+@mixin tablet_sm {
+	@media (max-width:#{$tablet_sm}) {
+		@content;
+	}
+}
+
+@mixin tablet_sm-min {
+	@media (min-width:#{$tablet_sm}) {
+		@content;
+	}
+}
+
+@mixin tablet_md {
+	@media (max-width:#{$tablet_md}) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (max-width:#{$tablet}) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (max-width:#{$desktop}) {
+		@content;
+	}
+}
+@mixin desktop-min {
+	@media (min-width:#{$desktop}) {
+		@content;
+	}
+}
+
+@mixin desktop_lg {
+	@media (max-width:#{$desktop_lg}) {
+		@content;
+	}
+}
+
+@mixin desktop-min_lg {
+	@media (min-width:#{$desktop_lg}) {
+		@content;
+	}
+}
+
+@mixin desktop_xl {
+	@media (max-width:#{$desktop_xl}) {
+		@content;
+	}
+}
+
+@mixin desktop_xm {
+	@media (max-width:#{$desktop_xm}) {
+		@content;
+	}
+}
+
+@mixin desktop_xxl {
+	@media (max-width:#{$desktop_xxl}) {
+		@content;
+	}
+}

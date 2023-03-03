@@ -1,0 +1,772 @@
+@import './help/normalize.scss';
+@import "./help/fonts.scss";
+@import "./help/media_mixins.scss";
+@import "./help/vars_and_mixins.scss";
+
+// заборонили scroll body при відкритому меню-бургер
+body.lock {
+    overflow: hidden;
+}
+.wrapper {
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 90%;
+}
+.title {
+    @include font($font-regular, 12px, 18px, $gray);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+}
+.header {
+    &__wrapper {
+        min-height: 80px;
+        margin: 0 auto;
+        overflow: hidden;
+        @include flex(flex-start, center, row);
+        background-color: $white;    
+    }
+    &__content {
+        width: $max-width;
+        margin: 0 auto;
+        @include flex(space-between, center, row);
+        @media (max-width:767px) {
+            width: 90%;
+            position: fixed;
+       } 
+        &-logo {
+            z-index: 2;
+        }
+    }
+}
+.menu__list {
+    & li {
+        @include font($font-regular, 12px, 18px, $gray);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        display: inline;
+        &:not(:last-child) {
+            margin-right: 30px;
+            @media (max-width:992px) {
+                margin-right: 10px;
+           }
+           @media (max-width: 767px) {
+            margin-bottom: 30px;
+        }
+        }
+        &:hover {
+            text-shadow: 0px 3px 8px $gray;
+        }
+        @media (max-width: 767px) {
+            display: block;
+            font-size: 24px;
+        }
+    }
+}
+.cart {
+    @include flex(space-between, center, row);
+    &-btn {
+        & img {
+            margin-bottom: -5px;
+            @media (max-width: 767px) {
+                display: none;
+            }
+        }
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+    &:hover {
+        text-shadow: 0px 3px 8px $gray;
+    }
+}
+.count {
+    display: inline-block;
+    text-align: center;
+    height: 18px;
+    width: 20px;
+    background-color: $gray;
+    border-radius: 10px;
+    margin-left: 5px;
+    padding-left: 2px;
+    @include font($font-regular, 12px, 18px, $white);
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+.menu__body {
+    @media (max-width: 767px) {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255, 0.9);
+        padding: 100px 30px 30px 30px;
+        transition: left 0.3s ease 0s;
+        overflow: auto;
+        &::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: white;
+            z-index: 5;
+        }
+    }
+}
+.menu__body._active {
+    left: 0;
+}
+.menu__icon {
+    display: none;
+    position: relative;
+    width: 26px;
+    height: 18px;
+    z-index: 5;
+    cursor: pointer;
+    & span,
+    &::before,
+    &::after {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 9%;
+        background-color: $gray;
+        transition: all 0.3s ease 0s;
+    }
+    &::before {
+        content: '';
+        top: 0;
+    }
+    &::after {
+        content: '';
+        bottom: 0;
+    }
+    & span {
+        top: 50%;
+        transform: scale(1) translate(0px, -50%);
+    }
+    @media (max-width: 767px) {
+        display: block;  
+    }
+}
+.menu__icon._active {
+    & span {
+        transform: scale(0) translate(0px, -50%);
+    }
+    &::before {
+        top: 50%;
+        transform: rotate(-45deg) translate(0px, -50%);
+    }
+    &::after {
+        bottom: 50%;
+        transform: rotate(45deg) translate(0px, 50%);
+    }
+}
+.uppage {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    & img {
+        width: 30px;
+        height: 30px;
+    }
+}
+.banner {
+    background: url('./img/IMAGE.jpg') no-repeat bottom/cover;
+    max-height: 630px;
+    padding: 15px;
+    @include tablet {
+        max-height: 500px;
+    }
+    @include mobile {
+        max-height: 350px;
+    }
+    &__wrapper {
+        min-height: 100vh;
+    }
+    &__content {
+        max-width: 793px;
+        margin: 0 auto;
+        @include flex(center, center, column);
+        @include tablet {
+            max-width: 650px;
+        }
+        @include mobile {
+            max-width: 350px;
+        }
+        &_header {
+            @include font($font-regular, 12px, 18px, $white);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 159px auto 10px;
+            @include tablet {
+                padding: 0px 20px;
+                margin-top: 100px;
+            }
+            @include mobile {
+                margin-top: 70px;
+            }
+        }
+        &_subheader {
+            @include font($font-regular, 47px, 60px, $white);
+            text-align: center;
+            margin-bottom: 10px;
+            @include tablet {
+                padding: 0px 20px;
+                font-size: 36px;
+                line-height: 30px;
+            }
+            @include mobile {
+                font-size: 28px;
+                line-height: 28px;
+            }
+        }
+        &_text {
+            text-align: center;
+            margin-bottom: 38px;
+            @include font($font-regular, 16px, 28px, $white);
+            @include tablet {
+                font-size: 14px;
+                line-height: 22px;
+            }
+        }
+        &_btn {
+            width: 231px;
+            height: 33px;
+            @include font($font-regular, 12px, 33px, $gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: transform 500ms ease;
+            &:hover {
+                transform: scale(1.2);
+            }
+            @include mobile {
+                width: 180px;
+                height: 25px;
+                line-height: 25px;
+            }
+        }
+    }
+}
+.text {
+    &__wrapper {
+        max-width: 658px;
+        margin: 0 auto;
+        @include flex(center, center, column);
+        text-align: center;
+        @include tablet {
+            max-width: 500px;
+            padding: 0px 20px;
+        }
+        @include mobile {
+            max-width: 350px;
+            padding: 0px 15px;
+        }
+    }
+    &__title {
+        @include font($font-regular, 28px, 40px, $gray);
+        margin: 123px auto 16px;
+        max-width: 578px;
+        @include tablet {
+            margin-top: 70px;
+            font-size: 24px;
+            line-height: 34px;
+        }
+        @include mobile {
+            margin-top: 40px;
+            font-size: 18px;
+            line-height: 28px;
+        }
+    }
+    &__content {
+        @include font($font-regular, 16px, 28px, $lightgray);
+        margin-bottom: 21px;
+        @include tablet {
+            margin-bottom: 17px;
+            font-size: 14px;
+            line-height: 22px;
+        }
+        @include mobile {
+            margin-bottom: 14px;
+            line-height: 18px;
+        }
+    }
+    &__details {
+        @include font($font-regular, 16px, 28px, $red);
+        &::after {
+            content: '';
+            width: 133px;
+            height: 2px;
+            background-color: $lightred;
+            display: block;
+        }
+        @include tablet {
+            font-size: 14px;
+            line-height: 22px;
+        }
+        @include mobile {
+            line-height: 18px;
+        }
+    }
+}
+.featured {
+    &__wrapper {
+        max-width: $max-width;
+        @include flex(center, center, column);
+        text-align: center; 
+        &_title {
+            margin: 100px auto; 
+            @include tablet {
+                margin: 50px auto;
+            }
+            @include mobile {
+                margin: 30px auto;
+            }
+        }
+    }
+    &__content{
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px;
+        @include tablet {
+            grid-template-columns: 1fr; 
+            gap: 20px;
+        }
+        &_card {
+            &-title {
+                margin: 35px auto 5px;
+                @include tablet {
+                    margin: 20px auto 5px;
+                }
+                @include mobile {
+                    margin: 15px auto 5px;
+                }
+            }
+        }
+    }
+}
+.card-title {
+    @include font($font-regular, 20px, 30px, $gray);
+    @include tablet {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    @include mobile {
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+.card-price {
+    @include font($font-regular, 16px, 28px, $lightgray);
+    @include tablet {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    @include mobile {
+        line-height: 18px;
+    }
+}
+.price-new {
+    margin-right: 10px;
+    color: $lightred;
+}
+.price-old {
+    text-decoration: line-through;
+}
+.products {
+    &__wrapper {
+        max-width: $max-width;
+        @include flex(center, center, column);
+        text-align: center; 
+        &_title {
+            margin: 119px auto 100px; 
+            @include tablet {
+                margin: 80px auto 50px;
+            }
+            @include mobile {
+                margin: 40px auto 20px;
+            }
+        }
+    }
+    &__content{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; 
+        gap: 17px;
+        @include tablet {
+            grid-template-columns: 1fr 1fr; 
+            gap: 13px;
+        }
+        @include mobile {
+            grid-template-columns: 1fr; 
+        }
+        &_card {
+            &-title {
+                margin: 35px auto 8px;
+                @include tablet {
+                    margin: 15px auto 8px;
+                }
+                @include mobile {
+                    margin: 10px auto 5px;
+                }
+            }
+            &-price {
+                margin-bottom: 65px;
+                @include tablet {
+                    margin-bottom: 30px;
+                }
+                @include mobile {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+.magazine {
+    &__wrapper {
+        max-width: $max-width;
+        @include flex(center, center, column);
+        text-align: center; 
+        &_title {
+            margin: 115px auto 70px; 
+            @include tablet {
+                margin: 80px auto 50px;
+            }
+            @include mobile {
+                margin: 40px auto 20px;
+            }
+        }
+    }
+    &__content {
+        @include flex(center, flex-start, row);
+        gap: 80px;
+        margin-bottom: 130px;
+        @include tablet {
+            @include flex(center, center, column);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        &_imagblock {
+            @include flex(center, center, row);
+            gap: 20px;
+            &-img {
+                & img {
+                    object-position: center;
+                    object-fit: cover;
+                    width: 100%;
+                }
+            }
+            &-block2 {
+                @include flex(center, center, column);
+                gap: 15px;
+                @include mobile {
+                    //gap: 15px;
+                    flex-direction: row
+                }
+            }
+            @include mobile {
+                //gap: 15px;
+                display: block;
+            }
+        }
+        &_textblock {
+            @include flex(center, flex-start, column);
+            text-align: left;
+            @include tablet {
+                @include flex(center, center, column);
+                text-align: center;
+            }
+            &-title {
+                margin-bottom: 14px;
+            }
+            &-subtitle {
+                @include font($font-regular, 36px, 50px, $gray);
+                margin-bottom: 15px;
+                @include tablet {
+                   font-size: 28px;
+                   line-height: 30px;
+                }
+                @include mobile {
+                    font-size: 24px;
+                    line-height: 28px;
+                }
+            }
+            &-text {
+                @include font($font-regular, 16px, 28px, $lightgray);
+                margin-bottom: 25px;
+                @include tablet {
+                    font-size: 14px;
+                    line-height: 22px;
+                 }
+                 @include mobile {
+                    line-height: 18px;
+                 }
+            }
+            &-btn {
+                width: 173px;
+                height: 35px;
+                background-color: $gray;
+                @include font($font-regular, 12px, 35px, $white);
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: transform 500ms ease;
+                &:hover {
+                transform: scale(1.2);
+                }
+                @include tablet {
+                    width: 150px;
+                    height: 30px;
+                    line-height: 30px;
+                 }
+                 @include mobile {
+                    width: 130px;
+                 }
+            }
+        }
+    }
+}
+.banner_img {
+    background: url('./img/IMAGE15.jpg') no-repeat bottom/cover;
+    min-height: 340px;
+    @include tablet {
+        min-height: 240px;
+     }
+}
+.stories {
+    &__wrapper {
+        //max-width: $max-width;
+        @include flex(center, center, column);
+        text-align: center;
+        &_title {
+            margin: 100px auto; 
+            @include tablet {
+                margin: 50px auto 30px;
+             }
+             @include mobile {
+                margin: 20px auto 15px;
+             }
+        }
+    }
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        @include tablet {
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+         }
+         @include mobile {
+            grid-template-columns: 1fr;
+         }
+        &_card {
+            @include flex(flex-start, flex-start, column); 
+            text-align: left;
+            @include tablet {
+               align-items: center;
+             }
+             &-img img {
+                width: 100%;
+             }
+            &-title {
+               margin: 29px auto 10px;
+               @include font($font-regular, 20px, 32px, $gray);
+               @include tablet {
+                margin: 20px auto 10px;
+                font-size: 16px;
+                line-height: 24px
+              }
+            }
+            &-text {
+                @include font($font-regular, 16px, 28px, $lightgray);
+                margin-bottom: 16px;
+                @include tablet {
+                    margin-bottom: 10px;
+                    font-size: 14px;
+                    line-height: 22px
+                  }
+            }
+            &-date {
+                @include font($font-regular, 12px, 18px, $gray);
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                margin-bottom: 120px;
+                @include tablet {
+                    margin-bottom: 60px;
+                 }
+                 @include mobile {
+                    margin-bottom: 40px;
+                 }
+            }
+        }
+    }
+}
+.footer {
+    min-height: 365px;
+    background-color: $gray;
+    @include flex(flex-start, center, column);
+    @include tablet {
+        min-height: 270px;
+     }
+     @include mobile {
+        min-height: 220px;
+     }
+    &_title {
+        @include font($font-regular, 12px, 18px, $white);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 90px auto 30px;
+        @include tablet {
+            margin: 70px auto 25px;
+         }
+         @include mobile {
+            margin: 40px auto 20px;
+         }
+    }
+    &_subtitle {
+        @include font($font-regular, 36px, 50px, $white);
+        margin-bottom: 40px;
+        @include tablet {
+            margin-bottom: 25px;
+            font-size: 28px;
+            line-height: 30px;
+         }
+         @include mobile {
+            margin-bottom: 20px;
+            font-size: 24px;
+            line-height: 28px;
+         }
+    }
+    &_input {
+        @include font($font-regular, 12px, 18px, $white);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background-color: $gray;
+        width: 350px;
+        height: 55px;
+        border: 1px solid #2F303E;
+        padding-left: 18px; 
+        &::placeholder {
+            color: $white;
+        }
+        @include tablet {
+            width: 250px;
+            height: 40px;
+            padding-left: 14px;
+         }
+         @include mobile {
+            width: 200px;
+            height: 30px;
+            padding-left: 10px;
+         }
+    }
+    &_btn {
+        @include font($font-regular, 12px, 18px, $gray);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background-color: $white;
+        width: 130px;
+        height: 55px;
+        cursor: pointer;
+        box-shadow: 0px 2px 6px rgba(29, 31, 46, 0.1);
+        transition: transform 500ms ease;
+        &:hover {
+            transform: scale(1.2);
+        }
+        @include tablet {
+            width: 100px;
+            height: 40px;
+         }
+         @include mobile {
+            height: 30px;
+         }
+    }
+}
+.copyright {
+    @include flex(space-between, stretch, row);
+    gap: 20px;
+    @include font($font-regular, 14px, 22px, $gray);
+    margin: 110px auto 52px;
+    @include tablet {
+        margin: 60px auto 30px;
+    }
+    @include mobile {
+        margin: 40px auto 20px;
+    }
+    @media (max-width:480px) {
+        flex-direction: column;
+        margin: 20px auto 10px;
+    }  
+    &__item {
+        @include flex(flex-start, flex-start, column);
+        &_title {
+            @include font($font-regular, 12px, 18px, $gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 23px;
+            @media (max-width:480px) {
+                margin-bottom: 0px;
+            }  
+        }
+        &_list {
+            @include flex(flex-start, flex-start, column);
+            &-text {
+                color: $lightgray;
+            }
+            &-email {
+                @include font($font-regular, 20px, 30px, $gray);
+                @include tablet {
+                    font-size: 16px;
+                    line-height: 24px;
+                 }
+                 @include mobile {
+                    font-size: 14px;
+                    line-height: 18px;
+                 }
+            }
+        }
+        &-link {
+            color: $lightgray;
+            &:not(:last-child) {
+                margin-bottom: 10px;
+                @media (max-width:480px) {
+                    margin-bottom: 0;
+                }  
+            }
+            
+        }
+      
+    }
+    &__text {  
+        max-width: 260px;
+        color: $lightgray;
+        @include tablet {
+            max-width: 200px;
+         }
+         @include mobile {
+            max-width: auto;
+         }
+         @media (max-width:480px) {
+            display:none;
+        }  
+        &_logo {
+            flex: 1 0 auto;
+            & p {
+                margin-top: 22px;
+            }
+        }
+        &_copy {
+            flex: 0 1 auto;
+        }
+    }
+    &__menu {
+        @media (max-width:480px) {
+            display: none;
+        }
+    }
+}

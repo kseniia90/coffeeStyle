@@ -1,0 +1,38 @@
+$white: #ffffff;
+$gray: #1D1F2E;
+$lightgray:#7C7D88;
+$red: #A25F4B;
+$lightred: #CC7F7F;
+$max-width: 940px;
+
+@mixin flex($justify, $align, $direction) {
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
+	flex-direction: $direction;
+}
+
+@mixin font($font-family, $size, $line-height, $color) {
+	font-size: $size;
+	font-family: $font-family;
+	line-height: $line-height;
+	color: $color;
+}
+
+@mixin size($width, $height) {
+	width: $width + px;
+	height: $height + px;
+}
+
+@mixin background-img() {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+@mixin position-center() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
